@@ -1,177 +1,134 @@
-import { useEffect, useState } from "react";
-import styles from "./App.module.css";
+import React, { useState, useEffect } from "react";
+import "./App.css";
+import { Square } from "./Square";
 
-const moves = [
+const values = [
   {
-    name: "rock",
-    dominates: "scrissors",
+    value: 0,
+    move: null,
   },
   {
-    name: "scrissors",
-    dominates: "paper",
+    value: 1,
+    move: null,
   },
   {
-    name: "paper",
-    dominates: "rock",
+    value: 2,
+    move: null,
+  },
+  {
+    value: 3,
+    move: null,
+  },
+  {
+    value: 4,
+    move: null,
+  },
+  {
+    value: 5,
+    move: null,
+  },
+  {
+    value: 6,
+    move: null,
+  },
+  {
+    value: 7,
+    move: null,
+  },
+  {
+    value: 8,
+    move: null,
   },
 ];
 
-const pc = {
-  points: 0,
-  totalScore: 0,
-  move: null,
-};
+const winMoves = [
+  [0, 1, 2],
+  [3, 4, 5],
+  [6, 7, 8],
+  [0, 4, 8],
+  [0, 3, 6],
+  [1, 4, 7],
+  [2, 5, 8],
+  [2, 4, 6],
+];
 
-const user = {
-  points: 0,
-  totalScore: 0,
-  move: null,
-};
+export default function App() {
+  const [moves, setMoves] = useState(values);
+  const [nextMove, setNextMove] = useState("O");
+  const [winner, setWinner] = useState(false);
 
-function App() {
-  const [pcState, setPcState] = useState(pc);
-  const [userState, setUserState] = useState(user);
-  const [winStatus, setWinStatus] = useState(false);
+  useEffect(() => {
+    let x = [];
+    let o = [];
 
-  if (pcState.points === 3) {
-    setPcState((prev) => {
-      return {
-        ...prev,
-        points: 0,
-        totalScore: prev.totalScore + 1,
-      };
-    });
-    setUserState((prev) => {
-      return {
-        ...prev,
-        points: 0,
-      };
-    });
-  }
-  if (userState.points === 3) {
-    setUserState((prev) => {
-      return {
-        ...prev,
-        points: 0,
-        totalScore: prev.totalScore + 1,
-      };
-    });
-    setPcState((prev) => {
-      return {
-        ...prev,
-        points: 0,
-      };
-    });
-  }
-
-  const handleClick = (value) => {
-    const pcMove = moves[Math.floor(Math.random() * 3)];
-    if (value === pcMove.name) {
-      setWinStatus("draw");
-      setPcState((prev) => {
-        return {
-          ...prev,
-          move: pcMove.name,
-        };
-      });
-      setUserState((prev) => {
-        return {
-          ...prev,
-          move: value,
-        };
-      });
-    } else if (value === pcMove.dominates) {
-      setWinStatus("You win");
-      setUserState((prev) => {
-        return {
-          ...prev,
-          points: prev.points + 1,
-          move: value,
-        };
-      });
-      setPcState((prev) => {
-        return {
-          ...prev,
-          move: pcMove.name,
-        };
-      });
-    } else {
-      setWinStatus("PC win");
-      setPcState((prev) => {
-        return {
-          ...prev,
-          points: prev.points + 1,
-          move: pcMove.name,
-        };
-      });
-      setUserState((prev) => {
-        return {
-          ...prev,
-          move: value,
-        };
-      });
+    if (nextMove === "X") {
+      setNextMove("O");
+    } else if (nextMove === "O") {
+      setNextMove("X");
     }
+
+    const allMoves = moves.filter((item) => {
+      return item.move !== null;
+    });
+
+    if (allMoves.length === 9) {
+      setWinner("draw");
+      x.length = 0;
+      o.length = 0;
+    }
+
+    moves.map((item) => {
+      if (item.move === "X") {
+        x.push(Number(item.value));
+      } else if (item.move === "O") {
+        o.push(Number(item.value));
+      }
+    }),
+      winMoves.map((moves) => {
+        const winArrX = x.filter((value) => moves.includes(value));
+        const winArrO = o.filter((value) => moves.includes(value));
+        if (winArrX.length === 3) {
+          setWinner("winner X");
+          x.length = 0;
+          o.length = 0;
+        }
+        if (winArrO.length === 3) {
+          setWinner("winner O");
+          x.length = 0;
+          o.length = 0;
+        }
+      });
+
+    // console.log(moves);
+  }, [moves]);
+
+  const restartClick = () => {
+    setMoves(values);
+    setNextMove("O");
+    setWinner(false);
   };
 
   return (
     <>
-      <div className={styles.container}>
-        {winStatus && <div className={styles.win}>{winStatus}</div>}
-        <h1>PC:&#128187;</h1>
-        <div className={styles.gameBlock}>
-          {pcState.move === "rock" && <p>&#9994;</p>}
-          {pcState.move === "paper" && <p>&#9996;</p>}
-          {pcState.move === "scrissors" && <p>&#9995;</p>}
-        </div>
-        <div className={styles.gameBlock}>
-          {userState.move === "rock" && <p>&#9994;</p>}
-          {userState.move === "paper" && <p>&#9996;</p>}
-          {userState.move === "scrissors" && <p>&#9995;</p>}
-        </div>
-        <div className={styles.moves}>
-          <h5>You: </h5>
-          <button
-            value="rock"
-            onClick={(evt) => {
-              handleClick(evt.target.value);
-            }}
-          >
-            &#9994;
-          </button>
-          <button
-            value="paper"
-            onClick={(evt) => {
-              handleClick(evt.target.value);
-            }}
-          >
-            &#9996;
-          </button>
-          <button
-            value="scrissors"
-            onClick={(evt) => {
-              handleClick(evt.target.value);
-            }}
-          >
-            &#9995;
-          </button>
-        </div>
-        <div className={styles.scoreBar}>
-          <h3>
-            Score:
-            <p>
-              PC {pcState.points} - {userState.points} user
-            </p>
-          </h3>
-          <h3>
-            Total score:
-            <p>
-              PC {pcState.totalScore} - {userState.totalScore} user
-            </p>
-          </h3>
-        </div>
+      <h1>{(winner && winner) || <p>Next move is {nextMove}</p>}</h1>
+      <div className="container">
+        {moves.map((item, _, moves) => {
+          return (
+            <Square
+              key={item.value}
+              value={item.value}
+              move={item.move}
+              setMoves={setMoves}
+              moves={moves}
+              nextMove={nextMove}
+              winner={winner}
+            />
+          );
+        })}
       </div>
+      <button className="button__restart" onClick={restartClick}>
+        restart
+      </button>
     </>
   );
 }
-
-export default App;
