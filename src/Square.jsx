@@ -1,6 +1,6 @@
 import React from "react";
 
-export function Square({ value, move, setMoves, nextMove, winner }) {
+export function Square({ value, move, setMoves, nextMove, winner, disable }) {
   const handleClick = (value) => {
     console.log(value);
     setMoves((prev) => {
@@ -9,6 +9,7 @@ export function Square({ value, move, setMoves, nextMove, winner }) {
           return {
             ...item,
             move: nextMove,
+            disable: true,
           };
         } else {
           return {
@@ -23,6 +24,7 @@ export function Square({ value, move, setMoves, nextMove, winner }) {
     <>
       <button
         className="container__inner"
+        disabled={disable}
         value={value}
         onClick={(evt) => {
           !winner && handleClick(evt.target.value);

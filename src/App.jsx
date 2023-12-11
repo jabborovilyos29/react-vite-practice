@@ -6,38 +6,47 @@ const values = [
   {
     value: 0,
     move: null,
+    disable: false,
   },
   {
     value: 1,
     move: null,
+    disable: false,
   },
   {
     value: 2,
     move: null,
+    disable: false,
   },
   {
     value: 3,
     move: null,
+    disable: false,
   },
   {
     value: 4,
     move: null,
+    disable: false,
   },
   {
     value: 5,
     move: null,
+    disable: false,
   },
   {
     value: 6,
     move: null,
+    disable: false,
   },
   {
     value: 7,
     move: null,
+    disable: false,
   },
   {
     value: 8,
     move: null,
+    disable: false,
   },
 ];
 
@@ -104,7 +113,7 @@ export default function App() {
 
   const restartClick = () => {
     setMoves(values);
-    setNextMove("O");
+    setNextMove("X");
     setWinner(false);
   };
 
@@ -122,6 +131,7 @@ export default function App() {
               moves={moves}
               nextMove={nextMove}
               winner={winner}
+              disable={item.disable}
             />
           );
         })}
