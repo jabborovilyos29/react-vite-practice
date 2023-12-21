@@ -12,86 +12,117 @@ body {
 }
 
 .header {
-  width: 95%;
-  height: 85px;
-  background-color: rgba(0, 128, 128, 0.612);
+  height: 80px;
+  text-align: center;
+  background: rgba(255, 99, 71, 0.525);
   display: flex;
-  flex-direction: row;
   justify-content: space-around;
   align-items: center;
 }
 
-.header__inner {
+.svg__controller {
   display: flex;
 }
 
-.button__cnt {
-  padding: 10px;
-  font-size: 16px;
-  background-color: teal;
-  color: white;
-  border: none;
-  margin: 10px 10px 10px 0px;
-}
-
-.container {
-  border-top: 2px solid teal;
-  width: 100%;
-  height: 100vh;
+.svg__container {
+  width: 600px;
+  overflow: auto;
+  height: 300px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
+  border: 2px solid tomato;
 }
 
-.card {
+.svg__container__inner {
+  width: 120px;
+  height: 100px;
+  display: flex;
+  border: 1px solid black;
   border-radius: 10px;
-  border: 2px teal solid;
-  width: 300px;
-  height: 150px;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  justify-content: center;
-  font-size: 14px;
-  font-weight: 500;
-}
-
-.search {
-  width: 200px;
-  border: 2px solid teal;
-  font-size: 20px;
-}
-
-.retry__button {
-  width: 50px;
-  height: 50px;
-  border-radius: 100%;
-}
-
-.retry__container {
-  display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 
-.cardInfo {
-  width: 450px;
-  height: 300px;
+.svgbox {
+  width: 100%;
+  display: flex;
+}
+
+.select__container {
+  margin: 25px 0px;
+  border-radius: 10px;
+  display: flex;
+}
+
+.select {
+  width: 200px;
+  height: 40px;
+  font-size: 16px;
+  border: none;
+  border: 1px solid tomato;
+}
+
+.main__container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: baseline;
-  font-size: 18px;
-  border: 2px solid teal;
-  padding: 10px;
 }
 
-.cardInfo button {
-  width: 70px;
-  height: 40px;
-  border: 1px solid teal;
-  background: none;
+/* Card  */
+.cc,
+.cc-back {
+  border-radius: 10px;
+  height: 195px;
+  letter-spacing: 0.1rem;
+  margin: 60px auto;
+  position: relative;
+  text-align: left;
+  text-transform: uppercase;
+  width: 325px;
+}
+
+.chip {
+  background: #efb77f;
+  border-radius: 5px;
+  display: block;
+  height: 30px;
+  left: 30px;
+  position: absolute;
+  top: 50px;
+  width: 40px;
+}
+
+.username {
+  font-size: 10px;
   font-weight: 800;
+  position: absolute;
+  bottom: 20px;
+  left: 30%;
+}
+
+.colors__buttons {
+  height: 39px;
+}
+.color__button {
+  cursor: pointer;
+  width: 34px;
+  height: 34px;
+  margin-right: 10px;
+  border: none;
+  font-size: 34px;
+}
+
+.svgBlock {
+  position: absolute;
+  top: 10%;
+  right: 10%;
+}
+
+.input__container input {
+  border: none;
+  border-bottom: 2px solid tomato;
+  border-top: 2px solid tomato;
+  font-size: 24px;
 }
