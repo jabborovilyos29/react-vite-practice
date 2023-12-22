@@ -1,16 +1,13 @@
 import React from "react";
 import { svgData } from "../../data/data";
+import { useDispatch, useSelector } from "react-redux";
+import { FILTER_DATA } from "../../store/actions/action";
 
-export function SvgSelector({ setFilterData }) {
+export function SvgSelector() {
+  const dispatch = useDispatch();
+
   const handleFilter = (value) => {
-    if (value === "all") {
-      setFilterData(svgData);
-    } else {
-      const newData = svgData.filter((data) => {
-        return data.category === value || data.content === null;
-      });
-      setFilterData(newData);
-    }
+    dispatch({ type: FILTER_DATA, payload: value });
   };
 
   return (
