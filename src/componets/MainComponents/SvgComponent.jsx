@@ -39,6 +39,12 @@ export default function SvgComponent() {
                     key={svg.id}
                     className="svg__container__inner"
                     onClick={() => handleClick(svg.id)}
+                    style={{
+                      border:
+                        svgSelect !== null &&
+                        svgSelect[0].id === svg.id &&
+                        "2px solid tomato",
+                    }}
                   >
                     <svg
                       viewBox="-22 -5 300.000000 300.000000"

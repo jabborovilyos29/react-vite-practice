@@ -26,7 +26,6 @@ body {
 
 .svg__container {
   width: 600px;
-  overflow: auto;
   height: 300px;
   display: flex;
   flex-wrap: wrap;

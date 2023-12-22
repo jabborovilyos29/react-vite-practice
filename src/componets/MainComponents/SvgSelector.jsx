@@ -7,7 +7,7 @@ export function SvgSelector({ setFilterData }) {
       setFilterData(svgData);
     } else {
       const newData = svgData.filter((data) => {
-        return data.category === value;
+        return data.category === value || data.content === null;
       });
       setFilterData(newData);
     }
