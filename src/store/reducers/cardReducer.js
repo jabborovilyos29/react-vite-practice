@@ -46,6 +46,7 @@ const initialData = {
   defaultColor: defaultColor,
   svgSelect: svgSelect,
   gradients: gradients,
+  filteredData: svgData,
 };
 
 export const cardReducer = (state = initialData, action) => {
@@ -63,12 +64,12 @@ export const cardReducer = (state = initialData, action) => {
 
     case FILTER_DATA:
       if (action.payload === "all") {
-        return state;
+        return { ...state, filteredData: state.data };
       } else {
         const newData = state.data.filter((data) => {
-          data.category === action.payload || data.content === null;
+          return data.category === action.payload || data.content === null;
         });
-        return { ...state, data: newData };
+        return { ...state, filteredData: newData };
       }
       break;
 
