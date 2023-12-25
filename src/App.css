@@ -6,122 +6,36 @@
 
 body {
   width: 100%;
-  max-width: 1220px;
+  max-width: 1320px;
   height: 100vh;
   margin: 0 auto;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.header {
-  height: 80px;
-  text-align: center;
-  background: rgba(255, 99, 71, 0.525);
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.svg__controller {
-  display: flex;
-}
-
-.svg__container {
-  width: 600px;
-  height: 300px;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-around;
-  border: 2px solid tomato;
-}
-
-.svg__container__inner {
-  width: 120px;
-  height: 100px;
-  display: flex;
-  border: 1px solid black;
-  border-radius: 10px;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.svgbox {
+.loader__container {
   width: 100%;
   display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-around;
+  align-items: center;
 }
 
-.select__container {
-  margin: 25px 0px;
-  border-radius: 10px;
-  display: flex;
+.loader {
+  width: 520px;
+  height: 350px;
+  background: linear-gradient(0.25turn, transparent, #fff, transparent),
+    linear-gradient(#ddd, #ddd), linear-gradient(#ddd, #ddd),
+    linear-gradient(#ddd, #ddd);
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-size: 215px 220px, 215px 130px, 100px 15px, 150px 15px;
+  background-position: -215px 0, 0 0, 15px 150px, 15px 180px;
+  animation: loading 1.5s infinite;
 }
 
-.select {
-  width: 200px;
-  height: 40px;
-  font-size: 16px;
-  border: none;
-  border: 1px solid tomato;
-}
-
-.main__container {
-  display: flex;
-  flex-direction: column;
-}
-
-/* Card  */
-.cc,
-.cc-back {
-  border-radius: 10px;
-  height: 195px;
-  letter-spacing: 0.1rem;
-  margin: 60px auto;
-  position: relative;
-  text-align: left;
-  text-transform: uppercase;
-  width: 325px;
-}
-
-.chip {
-  background: #efb77f;
-  border-radius: 5px;
-  display: block;
-  height: 30px;
-  left: 30px;
-  position: absolute;
-  top: 50px;
-  width: 40px;
-}
-
-.username {
-  font-size: 10px;
-  font-weight: 800;
-  position: absolute;
-  bottom: 20px;
-  left: 30%;
-}
-
-.colors__buttons {
-  height: 39px;
-}
-.color__button {
-  cursor: pointer;
-  width: 34px;
-  height: 34px;
-  margin-right: 10px;
-  border: none;
-  font-size: 34px;
-}
-
-.svgBlock {
-  position: absolute;
-  top: 10%;
-  right: 10%;
-}
-
-.input__container input {
-  border: none;
-  border-bottom: 2px solid tomato;
-  border-top: 2px solid tomato;
-  font-size: 24px;
+@keyframes loading {
+  to {
+    background-position: 215px 0, 0 0, 15px 150px, 15px 180px;
+  }
 }
