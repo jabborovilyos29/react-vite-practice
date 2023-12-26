@@ -1,6 +1,5 @@
 import React, { useRef, useState } from "react";
 import styles from "./ProductCard.module.css";
-import empty from "../../img/empty.jpg";
 
 export function ProductCard({ product }) {
   const ref = useRef();
