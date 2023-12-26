@@ -29,8 +29,8 @@ export function HeaderCategory() {
         }}
       >
         <option value={"All products"} label="All products" />
+        <option value={"Shoes "} label="Shoes" />
         <option value={"Miscellaneous"} label="Miscellaneous" />
-        <option value={"Shoes"} label="Shoes" />
         <option value={"Electronics"} label="Electronics" />
         <option value={"Clothes"} label="Clothes" />
       </select>
