@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import styles from "./MainComponent.module.css";
 import { ProductCard } from "./ProductCard";
 import { Loader } from "./Loader";
