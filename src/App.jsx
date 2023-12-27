@@ -1,13 +1,11 @@
 import React from "react";
 import "./App.css";
-import { Header } from "./componets/Header/Header";
-import { MainComponent } from "./componets/Main/MainComponent";
-
+import { AddTodo } from "./components/AddTodo";
+import { MainComponent } from "./components/MainComponent";
 
 export default function App() {
   return (
     <>
-      <Header />
       <MainComponent />
     </>
   );
